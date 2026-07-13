@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #F7F2EA;
+  --color-secondary: #FFF8F1;
+  --color-primary: #8C1C2C;
+  --color-accent: #C8A24A;
+  --color-text: #1E1B18;
+  --color-border: #D5B56A;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 3px;
+}
+
+/* Custom cursor styles */
+.envelope-cursor {
+  cursor: pointer;
+}
+
+/* Gold shimmer keyframe */
+@keyframes goldShimmer {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 0.7; }
+  100% {
+    transform: translateY(-100vh) translateX(20px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes breathePulse {
+  0%, 100% { opacity: 0.55; text-shadow: 0 0 8px rgba(200, 162, 74, 0.4); }
+  50% { opacity: 1; text-shadow: 0 0 20px rgba(200, 162, 74, 0.8), 0 0 40px rgba(200, 162, 74, 0.3); }
+}
+
+.tap-to-open-text {
+  animation: breathePulse 3s ease-in-out infinite;
+}
