@@ -603,35 +603,35 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         animate={isOpening ? { opacity: 0, y: 18 } : { opacity: 1, y: 0 }}
         transition={{ duration: isOpening ? 0.45 : 0.55, delay: isOpening ? 0 : 0.75, ease: "easeInOut" }}
       >
-        {/* Sarang Yadav */}
+        {/* Sarang */}
         <p
           style={{
-            fontFamily: "var(--font-cormorant)",
+            fontFamily: "var(--font-playfair)",
             fontSize: "clamp(1.45rem,5vmin,2.45rem)",
             color: DARK,
             margin: "clamp(4px,0.8vh,10px) 0",
-            fontWeight: 500,
+            fontWeight: 700,
             letterSpacing: "0.04em",
           }}
         >
-          Sarang Yadav
+          Sarang
         </p>
 
         {/* —— and —— */}
         <AndDivider />
 
-        {/* Aishwaria */}
+        {/* Aishwarya */}
         <p
           style={{
-            fontFamily: "var(--font-cormorant)",
+            fontFamily: "var(--font-playfair)",
             fontSize: "clamp(1.45rem,5vmin,2.45rem)",
             color: DARK,
             margin: "clamp(4px,0.8vh,10px) 0",
-            fontWeight: 500,
+            fontWeight: 700,
             letterSpacing: "0.04em",
           }}
         >
-          Aishwaria
+          Aishwarya
         </p>
 
         {/* ◆ Heart ornament */}
