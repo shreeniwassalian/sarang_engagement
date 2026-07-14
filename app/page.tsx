@@ -50,8 +50,8 @@ export default function LandingPage() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Re-enable pointer events only for the card itself */}
-            <div className="absolute inset-0 pointer-events-auto">
+            {/* Re-enable pointer events only for the card itself, but disable them when doors split so the user can scroll underneath */}
+            <div className={`absolute inset-0 ${stage === "door-splitting" ? "pointer-events-none" : "pointer-events-auto"}`}>
               {stage === "door-splitting" ? (
                 <>
                   <motion.div
