@@ -375,6 +375,24 @@ body {
   .countdown-unit { padding: 14px 3px; }
 }
 
+@keyframes borderShimmer {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.65; }
+}
+
+.gold-border-inner {
+  animation: borderShimmer 5s ease-in-out infinite;
+}
+
+@keyframes lineShimmer {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.85; }
+}
+
+.gold-line-shimmer {
+  animation: lineShimmer 4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; }
 }

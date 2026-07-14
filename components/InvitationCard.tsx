@@ -7,7 +7,7 @@ import WaxSeal from "./WaxSeal";
 /* ================================================================== */
 /*  Constants                                                           */
 /* ================================================================== */
-const GOLD = "#C8A24A";
+const GOLD = "#AC842B";
 const CRIMSON = "#8C1C2C";
 const DARK = "#2A1F14";
 
@@ -32,7 +32,7 @@ function FloralTexture() {
     >
       <defs>
         <pattern id="floral" x="0" y="0" width="84" height="84" patternUnits="userSpaceOnUse">
-          <g transform="translate(42 42)" fill="#8B6220" opacity="0.06">
+          <g transform="translate(42 42)" fill="#8B6220" opacity="0.035">
             {/* 8-petal flower */}
             {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
               <ellipse
@@ -116,18 +116,22 @@ function EnvelopeSVG({ isOpening }: { isOpening: boolean }) {
       {/* ── FOUR gold fold-lines — vectorEffect keeps them pixel-perfect ── */}
       {/* Top-left  → center */}
       <line x1="0" y1="0" x2={CX} y2={CY}
+        className="gold-line-shimmer"
         stroke={GOLD} strokeWidth="0.8"
         vectorEffect="non-scaling-stroke" opacity="0.72" />
       {/* Top-right → center */}
       <line x1="100" y1="0" x2={CX} y2={CY}
+        className="gold-line-shimmer"
         stroke={GOLD} strokeWidth="0.8"
         vectorEffect="non-scaling-stroke" opacity="0.72" />
       {/* Bottom-left  → center */}
       <line x1="0" y1="100" x2={CX} y2={CY}
+        className="gold-line-shimmer"
         stroke={GOLD} strokeWidth="0.8"
         vectorEffect="non-scaling-stroke" opacity="0.72" />
       {/* Bottom-right → center */}
       <line x1="100" y1="100" x2={CX} y2={CY}
+        className="gold-line-shimmer"
         stroke={GOLD} strokeWidth="0.8"
         vectorEffect="non-scaling-stroke" opacity="0.72" />
     </svg>
@@ -139,8 +143,8 @@ function EnvelopeSVG({ isOpening }: { isOpening: boolean }) {
 /* ================================================================== */
 
 /** Shared size — bigger = more prominent */
-const CO_SM = "clamp(52px, 13vmin, 78px)";  // top corners
-const CO_LG = "clamp(64px, 16vmin, 96px)";  // bottom corners
+const CO_SM = "clamp(40px, 10vmin, 78px)";  // top corners
+const CO_LG = "clamp(48px, 12vmin, 96px)";  // bottom corners
 
 function CornerTL() {
   return (
@@ -317,8 +321,8 @@ function TapLeaf({ flip = false }: { flip?: boolean }) {
   return (
     <svg
       viewBox="0 0 30 14"
-      width="30"
-      height="14"
+      width="38"
+      height="18"
       aria-hidden="true"
       style={{ transform: flip ? "scaleX(-1)" : undefined }}
     >
@@ -399,7 +403,7 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         style={{ inset: "clamp(8px,2vmin,14px)", border: `1px solid ${GOLD}`, zIndex: 6, opacity: 0.88 }}
       />
       <div
-        className="absolute pointer-events-none"
+        className="absolute pointer-events-none gold-border-inner"
         style={{ inset: "clamp(14px,3.5vmin,22px)", border: `0.5px solid ${GOLD}`, zIndex: 6, opacity: 0.45 }}
       />
 
@@ -431,13 +435,13 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
           height: `${CY}%`,
           paddingLeft: "clamp(22px,7vw,52px)",
           paddingRight: "clamp(22px,7vw,52px)",
-          paddingTop: "clamp(10px,3vh,26px)",
+          paddingTop: "clamp(12px,3.5vh,30px)",
           paddingBottom: "clamp(6px,2vh,18px)",
           zIndex: 10,
         }}
         initial={{ opacity: 0, y: 10 }}
         animate={isOpening ? { opacity: 0, y: -18 } : { opacity: 1, y: 0 }}
-        transition={{ duration: isOpening ? 0.5 : 1.1, ease: "easeOut" }}
+        transition={{ duration: isOpening ? 0.45 : 0.55, delay: isOpening ? 0 : 0.15, ease: "easeInOut" }}
       >
         {/* Top ornament */}
         <TopOrnament />
@@ -446,14 +450,15 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         <p
           style={{
             fontFamily: "var(--font-cormorant)",
-            fontSize: "clamp(0.6rem,1.9vmin,0.78rem)",
-            letterSpacing: "0.3em",
+            fontSize: "clamp(0.85rem,2.5vmin,1.05rem)",
+            letterSpacing: "0.34em",
             color: GOLD,
             textTransform: "uppercase",
-            margin: "clamp(4px,1vh,10px) 0 0 0",
+            margin: "clamp(12px,2vh,20px) 0 clamp(8px,1.5vh,16px) 0",
             textAlign: "center",
             fontWeight: 500,
             lineHeight: 1.3,
+            textShadow: "0 1px 3px rgba(0,0,0,0.25)",
           }}
         >
           Together with our families
@@ -463,13 +468,14 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         <h1
           style={{
             fontFamily: "var(--font-playfair)",
-            fontSize: "clamp(2.3rem,10vmin,3.9rem)",
-            fontWeight: 800,
+            fontSize: "clamp(2.6rem,11vmin,4.4rem)",
+            fontWeight: 900,
             color: CRIMSON,
             textAlign: "center",
             lineHeight: 0.9,
-            margin: "clamp(4px,1.2vh,14px) 0 clamp(4px,1.2vh,14px) 0",
+            margin: "clamp(10px,2vh,20px) 0 clamp(10px,2vh,20px) 0",
             letterSpacing: "-0.01em",
+            textShadow: "0 1px 3px rgba(0,0,0,0.15)",
           }}
         >
           YOU ARE
@@ -481,14 +487,15 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         <p
           style={{
             fontFamily: "var(--font-cormorant)",
-            fontSize: "clamp(0.6rem,1.9vmin,0.78rem)",
-            letterSpacing: "0.28em",
+            fontSize: "clamp(0.85rem,2.5vmin,1.05rem)",
+            letterSpacing: "0.32em",
             color: GOLD,
             textTransform: "uppercase",
-            margin: 0,
+            margin: "clamp(8px,1.5vh,16px) 0 0 0",
             textAlign: "center",
             fontWeight: 500,
             lineHeight: 1.3,
+            textShadow: "0 1px 3px rgba(0,0,0,0.25)",
           }}
         >
           To celebrate our
@@ -498,12 +505,13 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         <h2
           style={{
             fontFamily: "var(--font-great-vibes), cursive",
-            fontSize: "clamp(1.9rem,7vmin,3.6rem)",
+            fontSize: "clamp(2.15rem,8vmin,4rem)",
             color: CRIMSON,
             fontWeight: 400,
-            margin: "clamp(1px,0.3vh,5px) 0 clamp(5px,1.4vh,14px) 0",
+            margin: "clamp(4px,0.8vh,10px) 0 clamp(12px,2.2vh,24px) 0",
             lineHeight: 1.05,
             textAlign: "center",
+            textShadow: "0 1px 2px rgba(0,0,0,0.1)",
           }}
         >
           Engagement
@@ -550,8 +558,30 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.6 }}
-          animate={isOpening ? { opacity: 0, scale: 0.64, rotate: -12, y: -10 } : { opacity: 1, scale: 1, rotate: 0, y: 0 }}
-          transition={isOpening ? { duration: 0.62, delay: 0.22, ease: "easeInOut" } : { duration: 1.0, delay: 0.55, ease: [0.23, 1, 0.32, 1] }}
+          animate={
+            isOpening
+              ? { opacity: 0, scale: 0.64, rotate: -12, y: -10 }
+              : {
+                  opacity: 1,
+                  scale: 1,
+                  rotate: 0,
+                  y: [0, -5, 0],
+                }
+          }
+          transition={
+            isOpening
+              ? { duration: 0.62, delay: 0.22, ease: "easeInOut" }
+              : {
+                  y: {
+                    repeat: Infinity,
+                    duration: 3.5,
+                    ease: "easeInOut",
+                  },
+                  opacity: { duration: 0.55, delay: 0.45, ease: "easeInOut" },
+                  scale: { duration: 0.55, delay: 0.45, ease: "easeInOut" },
+                  rotate: { duration: 0.55, delay: 0.45, ease: "easeInOut" },
+                }
+          }
         >
           <WaxSeal isPressed={isPressed} />
         </motion.div>
@@ -565,21 +595,21 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         style={{
           top: `${CY}%`,
           // Push content below the seal (seal half-height + small gap)
-          paddingTop: "clamp(60px,17vmin,96px)",
-          paddingBottom: "clamp(10px,3vh,26px)",
+          paddingTop: "clamp(72px, 19vmin, 110px)",
+          paddingBottom: "clamp(12px,3.5vh,30px)",
           zIndex: 10,
         }}
         initial={{ opacity: 0, y: 8 }}
         animate={isOpening ? { opacity: 0, y: 18 } : { opacity: 1, y: 0 }}
-        transition={{ duration: isOpening ? 0.45 : 1.1, delay: isOpening ? 0 : 0.75, ease: "easeOut" }}
+        transition={{ duration: isOpening ? 0.45 : 0.55, delay: isOpening ? 0 : 0.75, ease: "easeInOut" }}
       >
         {/* Sarang Yadav */}
         <p
           style={{
             fontFamily: "var(--font-cormorant)",
-            fontSize: "clamp(1.05rem,3.5vmin,1.75rem)",
+            fontSize: "clamp(1.2rem, 4.2vmin, 2.05rem)",
             color: DARK,
-            margin: 0,
+            margin: "clamp(4px,0.8vh,10px) 0",
             fontWeight: 500,
             letterSpacing: "0.04em",
           }}
@@ -594,9 +624,9 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         <p
           style={{
             fontFamily: "var(--font-cormorant)",
-            fontSize: "clamp(1.05rem,3.5vmin,1.75rem)",
+            fontSize: "clamp(1.2rem, 4.2vmin, 2.05rem)",
             color: DARK,
-            margin: 0,
+            margin: "clamp(4px,0.8vh,10px) 0",
             fontWeight: 500,
             letterSpacing: "0.04em",
           }}
@@ -612,21 +642,37 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         {/* ❧ TAP TO OPEN ❧ */}
         <motion.div
           className="flex items-center"
-          style={{ gap: "clamp(6px,2vmin,12px)" }}
-          animate={isOpening ? { scale: 0.93, opacity: 0.65 } : { scale: 1, opacity: 1 }}
-          transition={{ duration: 0.2 }}
+          style={{ gap: "clamp(8px,2.5vmin,16px)" }}
+          animate={
+            isOpening
+              ? { scale: 0.93, opacity: 0.65 }
+              : { scale: [1, 1.05, 1] }
+          }
+          transition={
+            isOpening
+              ? { duration: 0.2 }
+              : {
+                  scale: {
+                    repeat: Infinity,
+                    duration: 2.4,
+                    ease: "easeInOut",
+                  },
+                  opacity: { duration: 0.55, delay: 0.75, ease: "easeInOut" }
+                }
+          }
         >
           <TapLeaf />
           <p
             className="tap-to-open-text"
             style={{
               fontFamily: "var(--font-cormorant)",
-              fontSize: "clamp(0.6rem,2vmin,0.86rem)",
+              fontSize: "clamp(1.05rem,2.8vmin,1.35rem)",
               color: GOLD,
-              letterSpacing: "0.35em",
+              letterSpacing: "0.38em",
               textTransform: "uppercase",
               margin: 0,
-              fontWeight: 600,
+              fontWeight: 700,
+              textShadow: "0 1px 3px rgba(0,0,0,0.25)",
             }}
           >
             Tap to Open

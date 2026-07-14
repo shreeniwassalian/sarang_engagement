@@ -34,19 +34,19 @@ export default function FloatingParticles() {
     const createParticle = (startY = -10): Particle => ({
       x: Math.random() * window.innerWidth,
       y: startY,
-      size: Math.random() * 2.2 + 0.6,
-      speedY: Math.random() * 0.55 + 0.18, // positive = falls downward
-      speedX: (Math.random() - 0.5) * 0.35,
+      size: Math.random() * 1.5 + 0.4,
+      speedY: Math.random() * 0.45 + 0.15, // positive = falls downward
+      speedX: (Math.random() - 0.5) * 0.25,
       opacity: 0,
-      fadeIn: Math.random() * 0.007 + 0.003,
+      fadeIn: Math.random() * 0.005 + 0.002,
       rotation: Math.random() * Math.PI * 2,
-      rotationSpeed: (Math.random() - 0.5) * 0.018,
+      rotationSpeed: (Math.random() - 0.5) * 0.012,
     });
 
     // Seed particles spread across height
-    for (let i = 0; i < 65; i++) {
+    for (let i = 0; i < 30; i++) {
       const p = createParticle(Math.random() * window.innerHeight);
-      p.opacity = Math.random() * 0.65;
+      p.opacity = Math.random() * 0.35;
       particles.push(p);
     }
 
@@ -81,7 +81,7 @@ export default function FloatingParticles() {
         p.y += p.speedY;
         p.x += p.speedX;
         p.rotation += p.rotationSpeed;
-        if (p.opacity < 0.72) p.opacity = Math.min(0.72, p.opacity + p.fadeIn);
+        if (p.opacity < 0.45) p.opacity = Math.min(0.45, p.opacity + p.fadeIn);
 
         // Recycle at bottom
         if (p.y > window.innerHeight + 12) {
