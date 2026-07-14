@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
+import ScratchCard from "./ScratchCard";
 import BackgroundOverlay from "./BackgroundOverlay";
 import Countdown from "./Countdown";
 import Divider from "./Divider";
@@ -39,12 +40,14 @@ export default function InvitationExperience() {
             </div>
           </InvitationSection>
 
-          <InvitationSection>
-            <p className="eyebrow">Save the date</p>
-            <h2 className="date-title">16 August 2026</h2>
-            <p className="time-title">5:00 PM onwards</p>
-            <Divider />
-          </InvitationSection>
+          <ScratchCard>
+            <InvitationSection style={{ minHeight: 'auto', padding: '40px 20px', background: 'transparent' }}>
+              <p className="eyebrow">Save the date</p>
+              <h2 className="date-title">16 August 2026</h2>
+              <p className="time-title">5:00 PM onwards</p>
+            </InvitationSection>
+          </ScratchCard>
+          <Divider />
 
           <InvitationSection className="message-section">
             <p>We eagerly await your gracious presence<br />to bless our special day and celebrate<br />the beginning of a beautiful journey together.</p>
