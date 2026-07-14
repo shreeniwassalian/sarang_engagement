@@ -32,7 +32,7 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
+    <div className="relative w-screen h-[100dvh] overflow-hidden">
       {/* ── Base Layer: Experience ── */}
       {/* Mounted early so it animates in behind the envelope and is ready to reveal */}
       {stage !== "sealed" && (

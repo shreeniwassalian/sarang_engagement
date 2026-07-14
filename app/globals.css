@@ -73,7 +73,7 @@ html, body {
   flex-shrink: 0;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   :root {
     --ic-seal-size: 130px;
     --ic-upper-pad-x: 42px;
