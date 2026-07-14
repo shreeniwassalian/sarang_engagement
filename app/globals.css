@@ -220,9 +220,9 @@ body {
   margin: 0 0 18px;
   color: #FFF0D4;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
+  font-size: clamp(1.25rem, 3.2vw, 1.6rem);
   font-weight: 800;
-  letter-spacing: 0.45em;
+  letter-spacing: 0.12em;
   line-height: 1.45;
   text-transform: uppercase;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
@@ -294,7 +294,7 @@ body {
   line-height: 1.48;
 }
 
-.couple-intro p { color: #FFF0D4; font-style: italic; font-weight: 800; letter-spacing: 0.1em; }
+.couple-intro p { color: #FFF0D4; font-style: italic; font-weight: 800; letter-spacing: 0.04em; }
 .couple-intro strong { color: #fff4e2; font-weight: 600; letter-spacing: 0.05em; }
 
 .with-script {
@@ -317,9 +317,9 @@ body {
   margin: 18px 0 0;
   color: #FFF0D4;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(2.1rem, 5.5vw, 3.2rem);
+  font-size: clamp(2.3rem, 6vw, 3.6rem);
   font-weight: 900;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.05em;
 }
 
 .venue-location,
@@ -327,9 +327,9 @@ body {
   margin: 18px 0 0;
   color: #FFF0D4;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-size: clamp(1.7rem, 4.5vw, 2.4rem);
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
 }
 
 .message-section p {
@@ -371,9 +371,9 @@ body {
   margin-top: 10px;
   color: #FFF0D4;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(0.88rem, 2.3vw, 1.18rem);
+  font-size: clamp(0.95rem, 2.6vw, 1.3rem);
   font-weight: 800;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 }
@@ -441,9 +441,9 @@ body {
   border: 1px solid #FFF0D4;
   color: #FFF0D4;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   font-weight: 800;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   border-radius: 4px;
   backdrop-filter: blur(4px);
