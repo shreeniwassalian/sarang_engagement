@@ -129,8 +129,8 @@ body {
   display: grid;
   place-items: center;
   padding: clamp(42px, 8vh, 84px) 0;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.22);
-  background: radial-gradient(circle, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.10) 35%, transparent 70%);
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.45), 0 1px 4px rgba(0, 0, 0, 0.3);
+  background: radial-gradient(circle, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.12) 35%, transparent 70%);
 }
 
 .invitation-section > div {
@@ -141,11 +141,12 @@ body {
   margin: 0 0 18px;
   color: #D4C3A3;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(0.68rem, 1.7vw, 0.86rem);
-  font-weight: 600;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 700;
   letter-spacing: 0.32em;
   line-height: 1.45;
   text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 }
 
 .invitation-title,
@@ -160,7 +161,7 @@ body {
 
 .invitation-title {
   color: #fff5e2;
-  font-size: clamp(2rem, 7.5vw, 4.2rem);
+  font-size: clamp(2.4rem, 8.5vw, 4.8rem);
   letter-spacing: -0.035em;
   text-transform: uppercase;
 }
@@ -199,7 +200,7 @@ body {
   margin: 0 0 10px;
   color: #FFF8F0;
   font-family: var(--font-great-vibes), cursive;
-  font-size: clamp(3.3rem, 11vw, 5rem);
+  font-size: clamp(3.8rem, 12vw, 5.8rem);
   font-weight: 400;
   line-height: 0.88;
 }
@@ -209,7 +210,7 @@ body {
   display: block;
   margin: 0;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
   line-height: 1.48;
 }
 
@@ -220,13 +221,13 @@ body {
   margin: -2px 0 !important;
   color: #D4C3A3 !important;
   font-family: var(--font-great-vibes), cursive !important;
-  font-size: clamp(2.5rem, 8vw, 3.7rem) !important;
+  font-size: clamp(3rem, 9.5vw, 4.4rem) !important;
   line-height: 0.75 !important;
 }
 
 .date-title {
   color: #fff5df;
-  font-size: clamp(2.55rem, 9vw, 5.1rem);
+  font-size: clamp(3rem, 10.5vw, 5.8rem);
 }
 
 .time-title,
@@ -235,7 +236,7 @@ body {
   margin: 18px 0 0;
   color: #D4C3A3;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-size: clamp(1.4rem, 3.5vw, 1.85rem);
   letter-spacing: 0.12em;
 }
 
@@ -243,7 +244,7 @@ body {
   margin: 0;
   color: #fff6e6;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(1.5rem, 4.2vw, 2.15rem);
+  font-size: clamp(1.75rem, 4.8vw, 2.45rem);
   font-style: italic;
   font-weight: 400;
   line-height: 1.45;
@@ -268,7 +269,7 @@ body {
   display: block;
   color: #D4C3A3;
   font-family: var(--font-playfair), Georgia, serif;
-  font-size: clamp(1.8rem, 6vw, 3.5rem);
+  font-size: clamp(2rem, 6.8vw, 4rem);
   line-height: 1;
 }
 
@@ -277,13 +278,14 @@ body {
   margin-top: 10px;
   color: #D4C3A3;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(0.58rem, 1.5vw, 0.76rem);
-  font-weight: 600;
+  font-size: clamp(0.88rem, 2.3vw, 1.18rem);
+  font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 }
 
-.venue-name { color: #fff4df; font-size: clamp(2.4rem, 8vw, 4.5rem); }
+.venue-name { color: #fff4df; font-size: clamp(2.8rem, 9vw, 5.1rem); }
 .venue-location { margin-top: 11px; }
 
 .maps-button {
@@ -310,7 +312,7 @@ body {
   transform: translateY(-3px);
 }
 
-.love-names { color: #FFF8F0; font-size: clamp(2.4rem, 8vw, 4.7rem); }
+.love-names { color: #FFF8F0; font-size: clamp(2.8rem, 9vw, 5.3rem); }
 .love-names span { color: #D4C3A3; font-family: var(--font-great-vibes), cursive; font-weight: 400; }
 
 @media (max-width: 460px) {
