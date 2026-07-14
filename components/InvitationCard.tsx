@@ -7,9 +7,20 @@ import WaxSeal from "./WaxSeal";
 /* ================================================================== */
 /*  Constants                                                           */
 /* ================================================================== */
-const GOLD = "#AC842B";
-const CRIMSON = "#8C1C2C";
-const DARK = "#2A1F14";
+const GOLD = "#C9A24B";
+const CRIMSON = "#7A1F2B";
+const DARK = "#3A3A3A";
+
+function CrownIcon() {
+  return (
+    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" aria-hidden="true">
+      <path d="M1.5 8.5L2 3L4.5 5.5L7 1.5L9.5 5.5L12 3L12.5 8.5H1.5Z" />
+      <circle cx="2" cy="2" r="1" fill="currentColor" stroke="none" />
+      <circle cx="7" cy="0.5" r="1.2" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="2" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
 
 /**
  * ENVELOPE CENTER — all four flap fold-lines converge here.
@@ -31,26 +42,14 @@ function FloralTexture() {
       aria-hidden="true"
     >
       <defs>
-        <pattern id="floral" x="0" y="0" width="84" height="84" patternUnits="userSpaceOnUse">
-          <g transform="translate(42 42)" fill="#8B6220" opacity="0.035">
-            {/* 8-petal flower */}
-            {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
-              <ellipse
-                key={deg}
-                rx="4"
-                ry="12"
-                transform={`rotate(${deg}) translate(0 -10)`}
-              />
-            ))}
-            <circle r="5" />
-            {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
-              <circle
-                key={deg}
-                cy="-24"
-                r="2"
-                transform={`rotate(${deg})`}
-              />
-            ))}
+        <pattern id="floral" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+          <g stroke="#C4BCAB" strokeWidth="0.8" fill="none" opacity="0.35" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M10,90 Q40,60 90,10" />
+            <path d="M30,70 Q25,55 35,50 Q45,55 45,65Z" fill="#C4BCAB" opacity="0.15" />
+            <path d="M50,50 Q45,35 55,30 Q65,35 65,45Z" fill="#C4BCAB" opacity="0.15" />
+            <path d="M70,30 Q65,15 75,10 Q85,15 85,25Z" fill="#C4BCAB" opacity="0.15" />
+            <path d="M40,60 Q55,65 60,55 Q55,45 45,50Z" fill="#C4BCAB" opacity="0.15" />
+            <path d="M60,40 Q75,45 80,35 Q75,25 65,30Z" fill="#C4BCAB" opacity="0.15" />
           </g>
         </pattern>
       </defs>
@@ -299,12 +298,12 @@ function HeartOrnament() {
 
 function AndDivider() {
   return (
-    <div className="flex items-center" style={{ gap: "clamp(8px,2.5vw,16px)", margin: "clamp(2px,0.7vh,7px) 0" }}>
-      <span style={{ display: "block", width: "clamp(22px,8vw,50px)", height: "0.5px", background: GOLD, opacity: 0.7 }} />
+    <div className="flex items-center" style={{ gap: "var(--ic-and-gap, clamp(8px,2.5vw,16px))", margin: "var(--ic-margin-and, clamp(2px,0.7vh,7px) 0)" }}>
+      <span style={{ display: "block", width: "var(--ic-and-line-w, clamp(22px,8vw,50px))", height: "0.5px", background: GOLD, opacity: 0.7 }} />
       <em
         style={{
           fontFamily: "var(--font-great-vibes), cursive",
-          fontSize: "clamp(1.15rem,3.8vmin,1.8rem)",
+          fontSize: "var(--ic-font-and, clamp(1.15rem,3.8vmin,1.8rem))",
           color: GOLD,
           fontStyle: "italic",
           lineHeight: 1,
@@ -312,7 +311,7 @@ function AndDivider() {
       >
         and
       </em>
-      <span style={{ display: "block", width: "clamp(22px,8vw,50px)", height: "0.5px", background: GOLD, opacity: 0.7 }} />
+      <span style={{ display: "block", width: "var(--ic-and-line-w, clamp(22px,8vw,50px))", height: "0.5px", background: GOLD, opacity: 0.7 }} />
     </div>
   );
 }
@@ -357,28 +356,31 @@ function BottomFleur() {
 /* ================================================================== */
 interface InvitationCardProps {
   onOpen?: () => void;
+  stage?: "sealed" | "envelope-opened" | "text-hiding" | "door-splitting" | "done";
 }
 
-export default function InvitationCard({ onOpen }: InvitationCardProps) {
+export default function InvitationCard({ onOpen, stage = "sealed" }: InvitationCardProps) {
   const [isPressed, setIsPressed] = useState(false);
-  const [isOpening, setIsOpening] = useState(false);
+  const [internalOpening, setInternalOpening] = useState(false);
+
+  // Card is considered opening/opened if tapped, OR if the external sequence is advanced.
+  const isOpening = internalOpening || stage !== "sealed";
 
   const handleTap = useCallback(() => {
     if (isOpening) return;
-    setIsOpening(true);
+    setInternalOpening(true);
     setIsPressed(true);
     setTimeout(() => {
       setIsPressed(false);
     }, 240);
-    setTimeout(() => {
-      onOpen?.();
-    }, 2100);
+    // Immediately notify parent so it can start the sequence timers
+    onOpen?.();
   }, [isOpening, onOpen]);
 
   return (
     <div
       className="relative w-full h-full overflow-hidden select-none"
-      style={{ background: "#F5EDDC", cursor: "pointer" }}
+      style={{ background: "#EDE8D8", cursor: "pointer" }}
       onClick={handleTap}
     >
       {/* ── Floral background texture ── */}
@@ -407,6 +409,14 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         style={{ inset: "clamp(14px,3.5vmin,22px)", border: `0.5px solid ${GOLD}`, zIndex: 6, opacity: 0.45 }}
       />
 
+      {/* ── Center Crowns ── */}
+      <div className="absolute pointer-events-none" style={{ top: "clamp(12px, 2.5vmin, 18px)", left: "50%", transform: "translate(-50%, 0)", zIndex: 8, color: GOLD }}>
+        <CrownIcon />
+      </div>
+      <div className="absolute pointer-events-none" style={{ bottom: "clamp(12px, 2.5vmin, 18px)", left: "50%", transform: "translate(-50%, 0) rotate(180deg)", zIndex: 8, color: GOLD }}>
+        <CrownIcon />
+      </div>
+
       {/* ── Corner ornaments ── */}
       <div className="absolute pointer-events-none"
         style={{ top: "clamp(3px,1vmin,8px)", left: "clamp(3px,1vmin,8px)", zIndex: 8 }}>
@@ -433,10 +443,10 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         className="absolute inset-x-0 top-0 flex flex-col items-center justify-center"
         style={{
           height: `${CY}%`,
-          paddingLeft: "clamp(22px,7vw,52px)",
-          paddingRight: "clamp(22px,7vw,52px)",
-          paddingTop: "clamp(12px,3.5vh,30px)",
-          paddingBottom: "clamp(6px,2vh,18px)",
+          paddingLeft: "var(--ic-upper-pad-x, clamp(22px,7vw,52px))",
+          paddingRight: "var(--ic-upper-pad-x, clamp(22px,7vw,52px))",
+          paddingTop: "var(--ic-upper-pad-y-top, clamp(12px,3.5vh,30px))",
+          paddingBottom: "var(--ic-upper-pad-y-bottom, clamp(6px,2vh,18px))",
           zIndex: 10,
         }}
         initial={{ opacity: 0, y: 10 }}
@@ -450,15 +460,15 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         <p
           style={{
             fontFamily: "var(--font-cormorant)",
-            fontSize: "clamp(0.85rem,2.5vmin,1.05rem)",
+            fontSize: "var(--ic-font-families, clamp(0.85rem,2.5vmin,1.05rem))",
             letterSpacing: "0.34em",
-            color: GOLD,
+            color: DARK,
             textTransform: "uppercase",
-            margin: "clamp(12px,2vh,20px) 0 clamp(8px,1.5vh,16px) 0",
+            margin: "var(--ic-margin-families, clamp(12px,2vh,20px) 0 clamp(8px,1.5vh,16px) 0)",
             textAlign: "center",
             fontWeight: 500,
             lineHeight: 1.3,
-            textShadow: "0 1px 3px rgba(0,0,0,0.25)",
+            textShadow: "0 1px 3px rgba(0,0,0,0.1)",
           }}
         >
           Together with our families
@@ -468,12 +478,12 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         <h1
           style={{
             fontFamily: "var(--font-playfair)",
-            fontSize: "clamp(2.6rem,11vmin,4.4rem)",
+            fontSize: "var(--ic-font-invited, clamp(2.6rem,11vmin,4.4rem))",
             fontWeight: 900,
             color: CRIMSON,
             textAlign: "center",
             lineHeight: 0.9,
-            margin: "clamp(10px,2vh,20px) 0 clamp(10px,2vh,20px) 0",
+            margin: "var(--ic-margin-invited, clamp(10px,2vh,20px) 0 clamp(10px,2vh,20px) 0)",
             letterSpacing: "-0.01em",
             textShadow: "0 1px 3px rgba(0,0,0,0.15)",
           }}
@@ -487,15 +497,15 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         <p
           style={{
             fontFamily: "var(--font-cormorant)",
-            fontSize: "clamp(0.85rem,2.5vmin,1.05rem)",
+            fontSize: "var(--ic-font-celebrate, clamp(0.85rem,2.5vmin,1.05rem))",
             letterSpacing: "0.32em",
-            color: GOLD,
+            color: DARK,
             textTransform: "uppercase",
-            margin: "clamp(8px,1.5vh,16px) 0 0 0",
+            margin: "var(--ic-margin-celebrate, clamp(8px,1.5vh,16px) 0 0 0)",
             textAlign: "center",
             fontWeight: 500,
             lineHeight: 1.3,
-            textShadow: "0 1px 3px rgba(0,0,0,0.25)",
+            textShadow: "0 1px 3px rgba(0,0,0,0.1)",
           }}
         >
           To celebrate our
@@ -505,10 +515,10 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         <h2
           style={{
             fontFamily: "var(--font-great-vibes), cursive",
-            fontSize: "clamp(2.15rem,8vmin,4.0rem)",
+            fontSize: "var(--ic-font-engagement, clamp(2.15rem,8vmin,4.0rem))",
             color: CRIMSON,
             fontWeight: 400,
-            margin: "clamp(4px,0.8vh,10px) 0 clamp(12px,2.2vh,24px) 0",
+            margin: "var(--ic-margin-engagement, clamp(4px,0.8vh,10px) 0 clamp(12px,2.2vh,24px) 0)",
             lineHeight: 1.05,
             textAlign: "center",
             textShadow: "0 1px 2px rgba(0,0,0,0.1)",
@@ -526,9 +536,19 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
       {/* ================================================================ */}
       <motion.div
         className="absolute pointer-events-none"
-        initial={{ opacity: 0, x: "-50%", y: "40%", scale: 0.94 }}
-        animate={isOpening ? { opacity: 1, x: "-50%", y: "-50%", scale: 1 } : { opacity: 0, x: "-50%", y: "40%", scale: 0.94 }}
-        transition={{ duration: 1.35, delay: 0.42, ease: [0.18, 0.8, 0.22, 1] }}
+        initial={stage === "sealed" ? { opacity: 0, x: "-50%", y: "40%", scale: 0.94 } : false}
+        animate={
+          stage === "text-hiding" || stage === "door-splitting"
+            ? { opacity: 0, clipPath: "inset(0 50% 0 50%)", x: "-50%", y: "-50%", scale: 1 }
+            : isOpening 
+            ? { opacity: 1, clipPath: "inset(0 0% 0 0%)", x: "-50%", y: "-50%", scale: 1 } 
+            : { opacity: 0, clipPath: "inset(0 0% 0 0%)", x: "-50%", y: "40%", scale: 0.94 }
+        }
+        transition={{ 
+          duration: stage === "text-hiding" ? 1.5 : 1.35, 
+          delay: isOpening && stage === "sealed" ? 0.42 : 0, 
+          ease: [0.18, 0.8, 0.22, 1] 
+        }}
         style={{
           left: "50%",
           top: "50%",
@@ -540,9 +560,9 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
           zIndex: 15,
         }}
       >
-        <div className="flex h-full flex-col items-center justify-center" style={{ padding: "clamp(16px,4vmin,28px)", textAlign: "center" }}>
-          <p style={{ margin: 0, color: "#FFF8F0", fontFamily: "var(--font-cormorant)", letterSpacing: "0.22em", fontSize: "clamp(0.62rem,1.8vmin,0.82rem)", textTransform: "uppercase", fontWeight: 600, textAlign: "center" }}>Engagement celebration</p>
-          <p style={{ margin: "clamp(10px,2vmin,16px) 0", color: CRIMSON, fontFamily: "var(--font-great-vibes), cursive", fontSize: "clamp(2rem,7vmin,3.4rem)", lineHeight: 0.9, textAlign: "center" }}>Sarang &amp; Aishwarya</p>
+        <div className="flex h-full flex-col items-center justify-center" style={{ padding: "var(--ic-inner-pad, clamp(16px,4vmin,28px))", textAlign: "center" }}>
+          <p style={{ margin: 0, color: CRIMSON, fontFamily: "var(--font-cormorant)", letterSpacing: "0.22em", fontSize: "var(--ic-font-inner-celebration, clamp(0.62rem,1.8vmin,0.82rem))", textTransform: "uppercase", fontWeight: 800, textAlign: "center", textShadow: "0 1px 2px rgba(0,0,0,0.15)" }}>Engagement celebration</p>
+          <p style={{ margin: "var(--ic-margin-inner-names, clamp(10px,2vmin,16px) 0)", color: CRIMSON, fontFamily: "var(--font-great-vibes), cursive", fontSize: "var(--ic-font-inner-names, clamp(2rem,7vmin,3.4rem))", lineHeight: 0.9, textAlign: "center" }}>Sarang &amp; Aishwarya</p>
           <span style={{ width: "38%", height: "1px", background: GOLD, opacity: 0.7 }} />
         </div>
       </motion.div>
@@ -557,7 +577,7 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         }}
       >
         <motion.div
-          initial={{ opacity: 0, scale: 0.6 }}
+          initial={stage === "sealed" ? { opacity: 0, scale: 0.6 } : false}
           animate={
             isOpening
               ? { opacity: 0, scale: 0.64, rotate: -12, y: -10 }
@@ -595,21 +615,21 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         style={{
           top: `${CY}%`,
           // Push content below the seal (seal half-height + small gap)
-          paddingTop: "clamp(72px, 19vmin, 110px)",
-          paddingBottom: "clamp(12px,3.5vh,30px)",
+          paddingTop: "var(--ic-lower-pad-y-top, clamp(72px, 19vmin, 110px))",
+          paddingBottom: "var(--ic-lower-pad-y-bottom, clamp(12px,3.5vh,30px))",
           zIndex: 10,
         }}
-        initial={{ opacity: 0, y: 8 }}
+        initial={stage === "sealed" ? { opacity: 0, y: 8 } : false}
         animate={isOpening ? { opacity: 0, y: 18 } : { opacity: 1, y: 0 }}
         transition={{ duration: isOpening ? 0.45 : 0.55, delay: isOpening ? 0 : 0.75, ease: "easeInOut" }}
       >
         {/* Sarang */}
         <p
           style={{
-            fontFamily: "var(--font-playfair)",
-            fontSize: "clamp(1.2rem, 4.2vmin, 2.05rem)",
+            fontFamily: "var(--font-cormorant)",
+            fontSize: "var(--ic-font-names, clamp(1.2rem, 4.2vmin, 2.05rem))",
             color: DARK,
-            margin: "clamp(4px,0.8vh,10px) 0",
+            margin: "var(--ic-margin-names, clamp(4px,0.8vh,10px) 0)",
             fontWeight: 700,
             letterSpacing: "0.04em",
           }}
@@ -623,10 +643,10 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         {/* Aishwarya */}
         <p
           style={{
-            fontFamily: "var(--font-playfair)",
-            fontSize: "clamp(1.2rem, 4.2vmin, 2.05rem)",
+            fontFamily: "var(--font-cormorant)",
+            fontSize: "var(--ic-font-names, clamp(1.2rem, 4.2vmin, 2.05rem))",
             color: DARK,
-            margin: "clamp(4px,0.8vh,10px) 0",
+            margin: "var(--ic-margin-names, clamp(4px,0.8vh,10px) 0)",
             fontWeight: 700,
             letterSpacing: "0.04em",
           }}
@@ -635,14 +655,14 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         </p>
 
         {/* ◆ Heart ornament */}
-        <div style={{ margin: "clamp(5px,1.4vh,13px) 0" }}>
+        <div style={{ margin: "var(--ic-margin-heart, clamp(5px,1.4vh,13px) 0)" }}>
           <HeartOrnament />
         </div>
 
         {/* ❧ TAP TO OPEN ❧ */}
         <motion.div
           className="flex items-center"
-          style={{ gap: "clamp(8px,2.5vmin,16px)" }}
+          style={{ gap: "var(--ic-tap-gap, clamp(8px,2.5vmin,16px))" }}
           animate={
             isOpening
               ? { scale: 0.93, opacity: 0.65 }
@@ -666,8 +686,8 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
             className="tap-to-open-text"
             style={{
               fontFamily: "var(--font-cormorant)",
-              fontSize: "clamp(1.05rem,2.8vmin,1.35rem)",
-              color: GOLD,
+              fontSize: "var(--ic-font-tap, clamp(1.05rem,2.8vmin,1.35rem))",
+              color: DARK,
               letterSpacing: "0.38em",
               textTransform: "uppercase",
               margin: 0,
@@ -681,7 +701,7 @@ export default function InvitationCard({ onOpen }: InvitationCardProps) {
         </motion.div>
 
         {/* Bottom fleur */}
-        <div style={{ marginTop: "clamp(6px,1.6vh,16px)" }}>
+        <div style={{ marginTop: "var(--ic-margin-fleur, clamp(6px,1.6vh,16px))" }}>
           <BottomFleur />
         </div>
       </motion.div>

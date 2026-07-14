@@ -11,18 +11,20 @@ export default function WaxSeal({ isPressed = false }: WaxSealProps) {
     <motion.div
       className="relative select-none"
       style={{
-        width: "clamp(120px, 30vmin, 168px)",
-        height: "clamp(120px, 30vmin, 168px)",
+        width: "var(--ic-seal-size, clamp(120px, 30vmin, 168px))",
+        height: "var(--ic-seal-size, clamp(120px, 30vmin, 168px))",
+        cursor: "pointer",
       }}
       animate={isPressed ? { scale: 0.91, rotateX: 10 } : { scale: 1, rotateX: 0 }}
-      transition={{ type: "spring", stiffness: 200, damping: 25 }}
+      whileHover={isPressed ? {} : { scale: 1.06 }}
+      transition={{ type: "spring", stiffness: 250, damping: 20 }}
     >
       <svg
         width="100%"
         height="100%"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
-        aria-label="Wax seal with initials S Y"
+        aria-label="Wax seal with initials AS"
         role="img"
       >
         <defs>
@@ -35,17 +37,17 @@ export default function WaxSeal({ isPressed = false }: WaxSealProps) {
             <feBlend in="SourceGraphic" in2="grain" mode="soft-light" />
           </filter>
           <radialGradient id="outerWax" cx="34%" cy="24%" r="76%">
-            <stop offset="0%" stopColor="#c68682" />
-            <stop offset="12%" stopColor="#7d292c" />
-            <stop offset="44%" stopColor="#56171c" />
-            <stop offset="78%" stopColor="#3a0c12" />
-            <stop offset="100%" stopColor="#22060b" />
+            <stop offset="0%" stopColor="#9C2F40" />
+            <stop offset="12%" stopColor="#7A1F2B" />
+            <stop offset="44%" stopColor="#5C1420" />
+            <stop offset="78%" stopColor="#3B0C14" />
+            <stop offset="100%" stopColor="#22060B" />
           </radialGradient>
           <radialGradient id="pressedWax" cx="35%" cy="27%" r="78%">
-            <stop offset="0%" stopColor="#f0d7d0" />
-            <stop offset="46%" stopColor="#d5a5a1" />
-            <stop offset="76%" stopColor="#b66d70" />
-            <stop offset="100%" stopColor="#722126" />
+            <stop offset="0%" stopColor="#8C2534" />
+            <stop offset="46%" stopColor="#7A1F2B" />
+            <stop offset="76%" stopColor="#5C1420" />
+            <stop offset="100%" stopColor="#3B0C14" />
           </radialGradient>
           <linearGradient id="rimHighlight" x1="18%" y1="12%" x2="78%" y2="88%">
             <stop offset="0%" stopColor="#f2c7be" stopOpacity="0.92" />
@@ -54,9 +56,9 @@ export default function WaxSeal({ isPressed = false }: WaxSealProps) {
             <stop offset="100%" stopColor="#180307" stopOpacity="0.86" />
           </linearGradient>
           <radialGradient id="centerGlow" cx="37%" cy="26%" r="65%">
-            <stop offset="0%" stopColor="#fff5ef" stopOpacity="0.58" />
-            <stop offset="55%" stopColor="#e8bdb7" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="#4d1117" stopOpacity="0.22" />
+            <stop offset="0%" stopColor="#FFF2F4" stopOpacity="0.45" />
+            <stop offset="55%" stopColor="#E08B98" stopOpacity="0.08" />
+            <stop offset="100%" stopColor="#2D080E" stopOpacity="0.22" />
           </radialGradient>
         </defs>
 
@@ -75,18 +77,16 @@ export default function WaxSeal({ isPressed = false }: WaxSealProps) {
         />
 
         {/* Pressed centre and inset edge */}
-        <circle cx="50" cy="50" r="37.8" fill="#4f1218" opacity="0.9" />
+        <circle cx="50" cy="50" r="37.8" fill="#3B0C14" opacity="0.9" />
         <circle cx="50" cy="49.4" r="35.3" fill="url(#pressedWax)" filter="url(#waxTexture)" />
         <circle cx="50" cy="49.4" r="35.3" fill="url(#centerGlow)" />
-        <circle cx="50" cy="49.4" r="35.3" fill="none" stroke="#441016" strokeWidth="1.25" opacity="0.62" />
-        <ellipse cx="39" cy="31" rx="18" ry="8" fill="#fff4ed" opacity="0.16" transform="rotate(-28 39 31)" />
+        <circle cx="50" cy="49.4" r="35.3" fill="none" stroke="#2D080E" strokeWidth="1.25" opacity="0.62" />
+        <ellipse cx="39" cy="31" rx="18" ry="8" fill="#FFF2F4" opacity="0.1" transform="rotate(-28 39 31)" />
 
-        {/* A lightly embossed, interlaced calligraphic monogram */}
-        <g fontFamily="var(--font-great-vibes), cursive" fontSize="41" fontWeight="400" textAnchor="middle">
-          <text x="39" y="61.5" fill="#f6d6cf" opacity="0.65" transform="translate(0 1)">S</text>
-          <text x="61" y="61.5" fill="#f6d6cf" opacity="0.65" transform="translate(0 1)">Y</text>
-          <text x="39" y="61.5" fill="#65171d">S</text>
-          <text x="61" y="61.5" fill="#65171d">Y</text>
+        {/* A lightly embossed classic monogram */}
+        <g fontFamily="var(--font-playfair)" fontSize="38" fontWeight="700" textAnchor="middle">
+          <text x="50" y="63" fill="#8C6A28" opacity="0.65" transform="translate(0 1.5)">AS</text>
+          <text x="50" y="63" fill="#EAD18A">AS</text>
         </g>
       </svg>
     </motion.div>
