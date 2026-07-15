@@ -41,11 +41,11 @@ export default function InvitationExperience() {
           </InvitationSection>
 
           <ScratchCard>
-            <InvitationSection style={{ minHeight: 'auto', padding: '20px', background: 'transparent' }}>
+            <div className="invitation-section" style={{ minHeight: 'auto', padding: '20px', background: 'transparent' }}>
               <p className="eyebrow">Save the date</p>
               <h2 className="date-title">16 August 2026</h2>
               <p className="time-title">5:00 PM onwards</p>
-            </InvitationSection>
+            </div>
           </ScratchCard>
           <Divider />
 

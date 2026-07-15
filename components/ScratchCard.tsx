@@ -25,14 +25,14 @@ export default function ScratchCard({ children }: ScratchCardProps) {
           angle: 60,
           spread: 55,
           origin: { x: 0, y: 0.7 },
-          colors: ['#D4AF37', '#FFF0D4', '#7A1F2B', '#A8B08C']
+          colors: ['#D4AF37', '#FFF0D4', '#7A1F2B', '#ADD8E6']
         });
         confetti({
           particleCount: 5,
           angle: 120,
           spread: 55,
           origin: { x: 1, y: 0.7 },
-          colors: ['#D4AF37', '#FFF0D4', '#7A1F2B', '#A8B08C']
+          colors: ['#D4AF37', '#FFF0D4', '#7A1F2B', '#ADD8E6']
         });
 
         if (Date.now() < end) {
@@ -144,7 +144,7 @@ export default function ScratchCard({ children }: ScratchCardProps) {
       ref={containerRef}
       className="scratch-card-container relative w-full overflow-hidden rounded-2xl"
       style={{
-        background: "#A8B08C", // Green background when revealed
+        background: "#ADD8E6", // Light blue background when revealed
         padding: "10px",
         touchAction: "none", // Prevent scrolling while scratching
       }}
