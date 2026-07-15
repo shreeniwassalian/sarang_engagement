@@ -468,7 +468,7 @@ body {
     padding: 0 0 30px;
   }
   .invitation-section { min-height: auto; padding: 0; }
-  .family-section { padding-top: 55px; padding-bottom: 80px; min-height: 100dvh; }
+  .family-section { padding-top: 45px; padding-bottom: 80px; min-height: 100dvh; }
   .family-section .eyebrow { margin-bottom: 32px; }
   .couple-intro { display: block; margin-top: 80px; }
   .couple-intro h2 { margin: 0 0 18px; }
