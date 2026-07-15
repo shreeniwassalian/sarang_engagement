@@ -466,8 +466,8 @@ body {
     width: min(100% - 28px, 700px); 
     padding: 10px 0 70px;
   }
-  .invitation-section { min-height: 72vh; padding: 10px 0; }
-  .family-section { padding-top: 0; }
+  .invitation-section { min-height: 82vh; padding: 10px 0; }
+  .family-section { padding-top: 25px; }
   .invitation-title { font-size: clamp(1.7rem, 9vw, 2.35rem); }
   .message-section p br { display: none; }
   .message-section p { max-width: 330px; margin: 0 auto; }
