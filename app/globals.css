@@ -277,6 +277,7 @@ body {
   display: grid;
   gap: clamp(24px, 4vh, 38px);
   justify-items: center;
+  margin-top: clamp(20px, 4vh, 40px);
 }
 
 .couple-intro h2 {
