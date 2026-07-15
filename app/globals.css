@@ -275,9 +275,9 @@ body {
 
 .couple-intro {
   display: grid;
-  gap: clamp(24px, 4vh, 38px);
+  gap: clamp(12px, 2.5vh, 24px);
   justify-items: center;
-  margin-top: clamp(20px, 4vh, 40px);
+  margin-top: clamp(120px, 22vh, 200px);
 }
 
 .couple-intro h2 {
@@ -298,8 +298,8 @@ body {
   line-height: 1.48;
 }
 
-.couple-intro p { color: #FFF0D4; font-style: italic; font-weight: 800; letter-spacing: 0.04em; }
-.couple-intro strong { color: #fff4e2; font-weight: 600; letter-spacing: 0.05em; }
+.couple-intro p { color: #FFF0D4; font-style: italic; font-weight: 800; letter-spacing: 0.04em; margin-bottom: 2px; }
+.couple-intro strong { color: #fff4e2; font-weight: 600; letter-spacing: 0.05em; line-height: 1.3; }
 
 .with-script {
   margin: -2px 0 !important;
@@ -465,10 +465,11 @@ body {
 @media (max-width: 460px) {
   .invitation-content { 
     width: min(100% - 28px, 700px); 
-    padding: 10px 0 70px;
+    padding: 10px 0 30px;
   }
-  .invitation-section { min-height: 82vh; padding: 10px 0; }
-  .family-section { padding-top: 25px; }
+  .invitation-section { min-height: 98dvh; padding: 0; }
+  .family-section { padding-top: 15px; }
+  .couple-intro { margin-top: 25vh; gap: 14px; }
   .invitation-title { font-size: clamp(1.7rem, 9vw, 2.35rem); }
   .message-section p br { display: none; }
   .message-section p { max-width: 330px; margin: 0 auto; }
