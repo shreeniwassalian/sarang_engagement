@@ -22,6 +22,7 @@ export default function InvitationExperience() {
           <InvitationSection className="family-section">
             <p className="eyebrow">Together with our families</p>
             <h1 className="invitation-title">Request the honour<br />of your presence</h1>
+            <Divider />
             <div className="couple-intro">
               <div>
                 <h2>Sarang</h2>
