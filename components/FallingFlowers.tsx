@@ -19,7 +19,7 @@ export default function FallingFlowers() {
     // Generate some flowers
     const generateFlowers = () => {
       const newFlowers: Flower[] = [];
-      for (let i = 0; i < 40; i++) { // Increased to 40 flowers
+      for (let i = 0; i < 18; i++) { // Reduced to 18 flowers for a more subtle effect
         newFlowers.push({
           id: i,
           x: Math.random() * 100, // random x position (vw)
