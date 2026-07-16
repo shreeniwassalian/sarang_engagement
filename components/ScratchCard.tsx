@@ -177,14 +177,14 @@ export default function ScratchCard({ children, onReveal }: ScratchCardProps) {
       ref={containerRef}
       className="scratch-card-container relative w-full max-w-[420px] mx-auto overflow-hidden rounded-xl border border-[#C9A24B]/60 shadow-xl"
       style={{
-        background: "linear-gradient(135deg, #FBF8F2 0%, #F3EDDE 100%)",
-        padding: "16px 20px",
+        background: "transparent",
+        padding: "0",
         touchAction: "none",
       }}
     >
-      {/* Decorative Revealed Card Inner Frame */}
-      <div className="w-full h-full rounded-lg border border-[#C9A24B]/30 py-4 px-3 flex flex-col items-center justify-center relative bg-gradient-to-b from-[#FFFDF9] to-[#F5ECE0]">
-        <div className="revealed-content text-center w-full z-0">
+      {/* Decorative Revealed Card Inner Frame Removed to allow 100% fill */}
+      <div className="w-full h-full rounded-xl flex flex-col items-center justify-center relative bg-transparent overflow-hidden">
+        <div className="revealed-content w-full h-full z-0 flex items-center justify-center">
           {children}
         </div>
       </div>

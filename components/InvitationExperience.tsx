@@ -20,7 +20,7 @@ export default function InvitationExperience() {
       initial={{ opacity: 0, scale: 0.98, filter: "blur(10px)" }}
       animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       transition={{ duration: 1.15, ease: "easeOut" }}
-      style={{ backgroundColor: "#E8DFD0" }}
+      style={{ backgroundColor: "#D4E0D7" }}
     >
       <div
         className="experience-scroll"
@@ -42,7 +42,7 @@ export default function InvitationExperience() {
           <div className="absolute inset-0 z-0 pointer-events-none">
             <BackgroundOverlay />
           </div>
-          <div className="invitation-content relative z-10" style={{ paddingBottom: 0 }}>
+          <div className="invitation-content relative z-10" style={{ paddingBottom: '40px' }}>
             <InvitationSection className="family-section">
               <p className="eyebrow" style={{ transform: "translateY(-5px)" }}>Together with our families</p>
               <h1 className="invitation-title" style={{ transform: "translateY(-5px)" }}>Request the honour<br />of your presence</h1>
@@ -67,83 +67,70 @@ export default function InvitationExperience() {
 
         <div className="invitation-content" style={{ paddingTop: '20px' }}>
           <div className="relative flex flex-col items-center justify-center my-16">
-            {/* Top Text (Pops up from behind) */}
-            <motion.div
-              initial={{ y: 60, opacity: 0, scale: 0.8 }}
-              animate={isScratched ? { y: -20, opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8, type: "spring", bounce: 0.5, delay: 0.2 }}
-              className="absolute z-0 w-full flex justify-center pointer-events-none"
-              style={{ top: '-40px' }}
-            >
-              <p className="tracking-[0.25em] text-[1.4rem] uppercase font-bold text-[#7A1F2B] mb-0.5" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.2rem)' }}>Save the date</p>
-            </motion.div>
-
             {/* The Scratch Card */}
             <div className="relative z-10 w-[92%] max-w-md mx-auto">
               <ScratchCard onReveal={() => setIsScratched(true)}>
-                <div className="flex items-center justify-center w-full" style={{ minHeight: '120px', padding: '10px 20px', background: 'transparent' }}>
-                  <h2 className="text-[#7A1F2B] font-normal whitespace-nowrap date-title" style={{ fontFamily: "var(--font-great-vibes), cursive" }}>16th August 2026</h2>
+                <div className="relative w-full rounded-[12px] overflow-hidden flex items-center justify-center bg-white shadow-sm">
+                  <img src="/save-the-date-card.png" alt="Save the Date 16th August 2026" className="w-full h-auto block pointer-events-none select-none" />
                 </div>
               </ScratchCard>
             </div>
-
-            {/* Bottom Text (Pops down from behind) */}
-            <motion.div
-              initial={{ y: -60, opacity: 0, scale: 0.8 }}
-              animate={isScratched ? { y: 10, opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8, type: "spring", bounce: 0.5, delay: 0.2 }}
-              className="absolute z-0 w-full flex justify-center pointer-events-none"
-              style={{ bottom: '-30px' }}
-            >
-              <p className="text-sm uppercase tracking-wider text-[#4C6178] font-medium mt-1">5:00 PM onwards</p>
-            </motion.div>
           </div>
           <Divider />
+        </div> {/* Close top invitation-content */}
 
-          <motion.div
-            initial={false}
-            animate={{
-              opacity: isScratched ? 1 : 0,
-              y: isScratched ? 0 : 36,
-              height: isScratched ? "auto" : 0,
-              pointerEvents: isScratched ? "auto" : "none"
-            }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            style={{ overflow: "hidden" }}
-          >
+        <motion.div
+          initial={false}
+          animate={{
+            opacity: isScratched ? 1 : 0,
+            y: isScratched ? 0 : 36,
+            height: isScratched ? "auto" : 0,
+            pointerEvents: isScratched ? "auto" : "none"
+          }}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          style={{ overflow: "hidden", width: "100%" }}
+        >
+          <div className="invitation-content" style={{ paddingTop: 0, paddingBottom: 0 }}>
             <InvitationSection>
               <p className="eyebrow" style={{ color: "#FFF0D4", textShadow: "0 2px 6px rgba(0,0,0,0.5)", letterSpacing: "0.15em" }}>Counting down to our celebration</p>
               <Countdown />
+              <div style={{ height: "30px" }} aria-hidden="true" />
             </InvitationSection>
 
             <Divider compact />
+            <div style={{ height: "60px" }} aria-hidden="true" />
+          </div>
 
-            <InvitationSection className="message-section">
-              <motion.div style={{ color: "#FFF0D4", textShadow: "0 2px 6px rgba(0,0,0,0.5)", display: "flex", flexDirection: "column", gap: "1.00rem", marginTop: "45px" }}>
-                <p>We eagerly await your gracious presence</p>
-                <p>to bless our special day and celebrate</p>
-                <p>the beginning of a beautiful journey together.</p>
-              </motion.div>
-            </InvitationSection>
+          {/* Powder Blue Section */}
+          <div className="w-full bg-[#B5D4DF]">
+            <div className="invitation-content" style={{ paddingTop: 0 }}>
+              <InvitationSection className="message-section">
+                <motion.div style={{ color: "#FFF0D4", textShadow: "0 2px 6px rgba(0,0,0,0.5)", display: "flex", flexDirection: "column", gap: "1.00rem", marginTop: "25vh" }}>
+                  <p>We eagerly await your gracious presence</p>
+                  <p>to bless our special day and celebrate</p>
+                  <p>the beginning of a beautiful journey together.</p>
+                </motion.div>
+              </InvitationSection>
 
-            <div style={{ height: "25vh" }} aria-hidden="true" />
+              <div style={{ height: "25vh" }} aria-hidden="true" />
 
-            <InvitationSection>
-              <motion.div>
-                <Venue />
-              </motion.div>
-            </InvitationSection>
+              <InvitationSection>
+                <motion.div>
+                  <Venue />
+                </motion.div>
+              </InvitationSection>
 
-            <div style={{ height: "25vh" }} aria-hidden="true" />
+              <div style={{ height: "25vh" }} aria-hidden="true" />
 
-            <InvitationSection className="love-section">
-              <p className="eyebrow" style={{ color: "#FFF0D4", textShadow: "0 2px 5px rgba(0,0,0,0.45)" }}>With love</p>
-              <motion.h2 className="love-names">Sarang <span>&amp;</span> Aishwarya</motion.h2>
-              <motion.p className="love-date" style={{ color: "#FFF0D4", textShadow: "0 2px 5px rgba(0,0,0,0.45)" }}>16 August 2026</motion.p>
-              <Divider compact />
-            </InvitationSection>
-          </motion.div>
-        </div>
+              <InvitationSection className="love-section">
+                <p className="eyebrow" style={{ color: "#FFF0D4", textShadow: "0 2px 5px rgba(0,0,0,0.45)" }}>With love</p>
+                <motion.h2 className="love-names">Sarang <span>&amp;</span> Aishwarya</motion.h2>
+                <motion.p className="love-date" style={{ color: "#FFF0D4", textShadow: "0 2px 5px rgba(0,0,0,0.45)" }}>16 August 2026</motion.p>
+                <Divider compact />
+              </InvitationSection>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </motion.main>
   );
