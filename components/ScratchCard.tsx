@@ -111,8 +111,18 @@ export default function ScratchCard({ children, onReveal }: ScratchCardProps) {
 
     resizeCanvas();
 
+    const resizeObserver = new ResizeObserver(() => {
+      requestAnimationFrame(resizeCanvas);
+    });
+    if (containerRef.current) {
+      resizeObserver.observe(containerRef.current);
+    }
+
     window.addEventListener("resize", resizeCanvas);
-    return () => window.removeEventListener("resize", resizeCanvas);
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", resizeCanvas);
+    };
   }, [isRevealed]);
 
   const handlePointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
