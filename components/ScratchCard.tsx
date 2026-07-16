@@ -67,29 +67,29 @@ export default function ScratchCard({ children, onReveal }: ScratchCardProps) {
     const fillCanvas = () => {
       ctx.globalCompositeOperation = "source-over";
       
-      // Champagne Gold Metallic Foil Diagonal Gradient
+      // Coin Silver Metallic Foil Diagonal Gradient
       const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      grad.addColorStop(0, "#F7E7C4");
-      grad.addColorStop(0.25, "#E2C478");
-      grad.addColorStop(0.5, "#C9A24B");
-      grad.addColorStop(0.75, "#E6D095");
-      grad.addColorStop(1, "#FAF0D7");
+      grad.addColorStop(0, "#F5F5F5");
+      grad.addColorStop(0.25, "#C0C0C0");
+      grad.addColorStop(0.5, "#9E9E9E");
+      grad.addColorStop(0.75, "#D4D4D4");
+      grad.addColorStop(1, "#FAFAFA");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Subtle diagonal metallic glare overlay
+      // Pronounced diagonal light reflection overlay
       const glare = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
       glare.addColorStop(0, "rgba(255, 255, 255, 0)");
-      glare.addColorStop(0.4, "rgba(255, 255, 255, 0.15)");
-      glare.addColorStop(0.5, "rgba(255, 255, 255, 0.35)");
-      glare.addColorStop(0.6, "rgba(255, 255, 255, 0.15)");
+      glare.addColorStop(0.4, "rgba(255, 255, 255, 0.2)");
+      glare.addColorStop(0.5, "rgba(255, 255, 255, 0.8)"); // Bright light reflection
+      glare.addColorStop(0.6, "rgba(255, 255, 255, 0.2)");
       glare.addColorStop(1, "rgba(255, 255, 255, 0)");
       ctx.fillStyle = glare;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Gold Foil Border Trim
-      ctx.strokeStyle = "rgba(122, 31, 43, 0.25)";
-      ctx.lineWidth = 1;
+      // Silver Foil Border Trim
+      ctx.strokeStyle = "rgba(160, 160, 160, 0.7)";
+      ctx.lineWidth = 1.5;
       ctx.strokeRect(5, 5, canvas.width - 10, canvas.height - 10);
 
       // Text Shadow for readability
@@ -100,7 +100,7 @@ export default function ScratchCard({ children, onReveal }: ScratchCardProps) {
 
       // Cover Text: ✦ SCRATCH TO REVEAL ✦
       ctx.fillStyle = "#FFFDF7";
-      ctx.font = "600 13px system-ui, -apple-system, sans-serif";
+      ctx.font = "700 18px system-ui, -apple-system, sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText("✦  SCRATCH TO REVEAL  ✦", canvas.width / 2, canvas.height / 2);
@@ -183,14 +183,27 @@ export default function ScratchCard({ children, onReveal }: ScratchCardProps) {
   };
 
   return (
-    <div 
-      ref={containerRef}
-      className="scratch-card-container relative w-full max-w-[420px] mx-auto overflow-hidden rounded-xl border border-[#C9A24B]/60 shadow-xl"
+    <motion.div 
+      ref={containerRef as any}
+      className="relative w-full max-w-[420px] mx-auto overflow-hidden rounded-xl border-2"
       style={{
         background: "transparent",
         padding: "0",
         touchAction: "none",
       }}
+      animate={{
+        boxShadow: [
+          "0 0 0 1px rgba(180, 180, 180, 0.4), inset 0 0 10px rgba(180, 180, 180, 0.1), 0 0 15px rgba(255, 255, 255, 0.2)",
+          "0 0 15px 2px rgba(180, 180, 180, 0.8), inset 0 0 20px rgba(180, 180, 180, 0.4), 0 0 35px rgba(255, 255, 255, 0.7)",
+          "0 0 0 1px rgba(180, 180, 180, 0.4), inset 0 0 10px rgba(180, 180, 180, 0.1), 0 0 15px rgba(255, 255, 255, 0.2)"
+        ],
+        borderColor: [
+          "rgba(180, 180, 180, 0.4)",
+          "rgba(210, 210, 210, 1)",
+          "rgba(180, 180, 180, 0.4)"
+        ]
+      }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
     >
       {/* Decorative Revealed Card Inner Frame Removed to allow 100% fill */}
       <div className="w-full h-full rounded-xl flex flex-col items-center justify-center relative bg-transparent overflow-hidden">
@@ -211,6 +224,6 @@ export default function ScratchCard({ children, onReveal }: ScratchCardProps) {
         transition={{ duration: 0.8, ease: "easeInOut" }}
         style={{ pointerEvents: isRevealed ? "none" : "auto" }}
       />
-    </div>
+    </motion.div>
   );
 }
