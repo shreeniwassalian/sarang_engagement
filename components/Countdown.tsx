@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const weddingDate = new Date("2026-08-16T17:00:00+05:30").getTime();
+const weddingDate = new Date("2026-08-16T16:00:00+05:30").getTime();
 
 function getTimeLeft() {
   const remaining = Math.max(0, weddingDate - Date.now());

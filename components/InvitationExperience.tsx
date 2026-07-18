@@ -99,7 +99,7 @@ export default function InvitationExperience() {
             <div className="relative z-10 w-[85%] max-w-[320px] sm:max-w-[360px] mx-auto">
               <ScratchCard onReveal={() => setIsScratched(true)}>
                 <div className="relative w-full rounded-[12px] overflow-hidden flex items-center justify-center bg-white shadow-sm">
-                  <img src="/save-the-date-new.png" alt="Save the Date 16th August 2026" className="w-full h-auto block pointer-events-none select-none" style={{ transform: "scale(1.12) translate(-1.5%, 0)" }} />
+                  <img src="/save-the-date-v4.png" alt="Save the Date 16th August 2026" className="w-full h-auto block pointer-events-none select-none object-cover scale-[1.25]" />
                 </div>
               </ScratchCard>
             </div>
