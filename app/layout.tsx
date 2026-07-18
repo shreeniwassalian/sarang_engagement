@@ -33,13 +33,31 @@ const alexBrush = Alex_Brush({
 });
 
 export const metadata: Metadata = {
-  title: "Sarang & Aishwaria — Engagement Invitation",
+  title: "Sarang ❤️ Aishwarya | Engagement Invitation",
   description:
-    "You are cordially invited to celebrate the engagement of Sarang Yadav & Aishwaria.",
+    "Together with our families,\nwe request the honour of your presence at the engagement ceremony of\nSarang & Aishwarya.\n\nTap to view the invitation.",
   openGraph: {
-    title: "Sarang & Aishwaria — Engagement Invitation",
-    description: "A celebration of love and new beginnings.",
+    title: "Sarang ❤️ Aishwarya | Engagement Invitation",
+    description:
+      "Together with our families,\nwe request the honour of your presence at the engagement ceremony of\nSarang & Aishwarya.\n\nTap to view the invitation.",
+    url: "https://sarang-aishwarya-engagement.vercel.app/",
+    siteName: "Sarang & Aishwarya Engagement",
     type: "website",
+    images: [
+      {
+        url: "https://sarang-aishwarya-engagement.vercel.app/og-envelope.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sarang and Aishwarya Engagement Invitation",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sarang ❤️ Aishwarya | Engagement Invitation",
+    description:
+      "Together with our families,\nwe request the honour of your presence at the engagement ceremony of\nSarang & Aishwarya.\n\nTap to view the invitation.",
+    images: ["https://sarang-aishwarya-engagement.vercel.app/og-envelope.jpg"],
   },
 };
 

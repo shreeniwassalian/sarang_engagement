@@ -44,7 +44,7 @@ export default function FloatingParticles() {
     });
 
     // Seed particles spread across height
-    for (let i = 0; i < 75; i++) {
+    for (let i = 0; i < 25; i++) {
       const p = createParticle(Math.random() * window.innerHeight);
       p.opacity = Math.random() * 0.55;
       particles.push(p);
