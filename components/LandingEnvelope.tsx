@@ -11,29 +11,7 @@ export default function LandingEnvelope({ onOpen }: LandingEnvelopeProps) {
   return (
     <div className="relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden" style={{ backgroundColor: "#E3F2FD" }}>
       
-      {/* Scattered Floral Accents (Background) */}
-      <div className="absolute inset-0 pointer-events-none opacity-40">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <g fill="none" stroke="#A9C1D9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            {/* Top Left */}
-            <path d="M 50,50 Q 80,30 110,60 Q 130,50 150,70" transform="rotate(15 50 50)" />
-            <circle cx="110" cy="60" r="3" fill="#A9C1D9" />
-            <circle cx="150" cy="70" r="2" fill="#A9C1D9" />
-            
-            {/* Bottom Right */}
-            <path d="M calc(100% - 50px),calc(100% - 50px) Q calc(100% - 80px),calc(100% - 30px) calc(100% - 110px),calc(100% - 60px)" />
-            <circle cx="calc(100% - 110px)" cy="calc(100% - 60px)" r="3" fill="#A9C1D9" />
-            
-            {/* Top Right */}
-            <path d="M calc(100% - 60px),70 Q calc(100% - 100px),90 calc(100% - 80px),120" />
-            <circle cx="calc(100% - 80px)" cy="120" r="4" fill="#A9C1D9" />
-            
-            {/* Bottom Left */}
-            <path d="M 60,calc(100% - 80px) Q 40,calc(100% - 120px) 90,calc(100% - 150px)" />
-            <circle cx="90" cy="calc(100% - 150px)" r="2" fill="#A9C1D9" />
-          </g>
-        </svg>
-      </div>
+
 
       {/* Envelope Container */}
       <motion.div
