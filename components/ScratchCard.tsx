@@ -71,18 +71,19 @@ export default function ScratchCard({ children, onReveal }: ScratchCardProps) {
 
   const fillCanvas = useCallback(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
     ctx.globalCompositeOperation = "source-over";
 
     if (coverImageRef.current) {
-      ctx.drawImage(coverImageRef.current, 0, 0, canvas.width, canvas.height);
+      ctx.drawImage(coverImageRef.current, 0, 0, container.offsetWidth, container.offsetHeight);
     } else {
       // Fallback while loading
       ctx.fillStyle = "#C0C0C0";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, container.offsetWidth, container.offsetHeight);
     }
   }, []);
 
@@ -92,8 +93,16 @@ export default function ScratchCard({ children, onReveal }: ScratchCardProps) {
     if (!canvas || !container) return;
 
     const resizeCanvas = () => {
-      canvas.width = container.offsetWidth;
-      canvas.height = container.offsetHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = container.offsetWidth * dpr;
+      canvas.height = container.offsetHeight * dpr;
+      canvas.style.width = `${container.offsetWidth}px`;
+      canvas.style.height = `${container.offsetHeight}px`;
+      
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.scale(dpr, dpr);
+      }
       
       if (!isRevealed) {
         fillCanvas();
