@@ -200,7 +200,7 @@ export default function ScratchCard({ children, onReveal }: ScratchCardProps) {
       style={{
         background: "transparent",
         padding: "0",
-        touchAction: "none",
+        touchAction: isRevealed ? "auto" : "none",
       }}
       animate={{
         boxShadow: [
