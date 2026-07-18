@@ -36,19 +36,19 @@ export default function ScratchCard({ children, onReveal }: ScratchCardProps) {
         } catch (err) {}
       }
       if (onReveal) onReveal();
-      const duration = 3000;
+      const duration = 1500;
       const end = Date.now() + duration;
 
       const frame = () => {
         confetti({
-          particleCount: 5,
+          particleCount: 2,
           angle: 60,
           spread: 55,
           origin: { x: 0, y: 0.7 },
           colors: ['#D4AF37', '#FFF0D4', '#7A1F2B', '#ADD8E6']
         });
         confetti({
-          particleCount: 5,
+          particleCount: 2,
           angle: 120,
           spread: 55,
           origin: { x: 1, y: 0.7 },

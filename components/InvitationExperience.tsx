@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
 import ScratchCard from "./ScratchCard";
 import BackgroundOverlay from "./BackgroundOverlay";
+import FloatingParticles from "./FloatingParticles";
 import Countdown from "./Countdown";
 import Divider from "./Divider";
 import InvitationSection from "./InvitationSection";
@@ -24,6 +25,7 @@ export default function InvitationExperience() {
       transition={{ duration: 1.15, ease: "easeOut" }}
       style={{ backgroundColor: "transparent" }}
     >
+      <FloatingParticles />
       <div
         className="experience-scroll"
         ref={scrollRef}
