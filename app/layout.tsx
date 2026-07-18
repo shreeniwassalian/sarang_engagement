@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Playfair_Display, Great_Vibes } from "next/font/google";
+import { Cormorant_Garamond, Playfair_Display, Great_Vibes, Alex_Brush } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -25,6 +25,13 @@ const greatVibes = Great_Vibes({
   display: "swap",
 });
 
+const alexBrush = Alex_Brush({
+  variable: "--font-alex-brush",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Sarang & Aishwaria — Engagement Invitation",
   description:
@@ -42,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${playfair.variable} ${greatVibes.variable} h-full`}
+      className={`${cormorant.variable} ${playfair.variable} ${greatVibes.variable} ${alexBrush.variable} h-full`}
     >
       <body className="min-h-full overflow-hidden">{children}</body>
     </html>

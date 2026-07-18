@@ -9,7 +9,7 @@ interface LandingEnvelopeProps {
 
 export default function LandingEnvelope({ onOpen }: LandingEnvelopeProps) {
   return (
-    <div className="relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden" style={{ backgroundColor: "#F7F5F0" }}>
+    <div className="relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden" style={{ backgroundColor: "#E3F2FD" }}>
       
       {/* Scattered Floral Accents (Background) */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -59,7 +59,7 @@ export default function LandingEnvelope({ onOpen }: LandingEnvelopeProps) {
         <h1 
           style={{ 
             color: "#4C6178", 
-            fontFamily: "var(--font-great-vibes), cursive",
+            fontFamily: "var(--font-alex-brush), cursive",
             fontSize: "clamp(3.5rem, 8vw, 5.5rem)",
             lineHeight: 1,
             margin: "0 0 10px 0",

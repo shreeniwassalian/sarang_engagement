@@ -302,7 +302,7 @@ function AndDivider() {
       <span style={{ display: "block", width: "var(--ic-and-line-w, clamp(22px,8vw,50px))", height: "0.5px", background: GOLD, opacity: 0.7 }} />
       <em
         style={{
-          fontFamily: "var(--font-great-vibes), cursive",
+          fontFamily: "var(--font-alex-brush), cursive",
           fontSize: "var(--ic-font-and, clamp(1.15rem,3.8vmin,1.8rem))",
           color: GOLD,
           fontStyle: "italic",
@@ -514,7 +514,7 @@ export default function InvitationCard({ onOpen, stage = "sealed" }: InvitationC
         {/* ── Engagement (script) ── */}
         <h2
           style={{
-            fontFamily: "var(--font-great-vibes), cursive",
+            fontFamily: "var(--font-alex-brush), cursive",
             fontSize: "var(--ic-font-engagement, clamp(2.15rem,8vmin,4.0rem))",
             color: CRIMSON,
             fontWeight: 400,
@@ -562,7 +562,7 @@ export default function InvitationCard({ onOpen, stage = "sealed" }: InvitationC
       >
         <div className="flex h-full flex-col items-center justify-center" style={{ padding: "var(--ic-inner-pad, clamp(16px,4vmin,28px))", textAlign: "center" }}>
           <p style={{ margin: 0, color: CRIMSON, fontFamily: "var(--font-cormorant)", letterSpacing: "0.22em", fontSize: "var(--ic-font-inner-celebration, clamp(0.62rem,1.8vmin,0.82rem))", textTransform: "uppercase", fontWeight: 800, textAlign: "center", textShadow: "0 1px 2px rgba(0,0,0,0.15)" }}>Engagement celebration</p>
-          <p style={{ margin: "var(--ic-margin-inner-names, clamp(10px,2vmin,16px) 0)", color: CRIMSON, fontFamily: "var(--font-great-vibes), cursive", fontSize: "var(--ic-font-inner-names, clamp(2rem,7vmin,3.4rem))", lineHeight: 0.9, textAlign: "center" }}>Sarang &amp; Aishwarya</p>
+          <p style={{ margin: "var(--ic-margin-inner-names, clamp(10px,2vmin,16px) 0)", color: CRIMSON, fontFamily: "var(--font-alex-brush), cursive", fontSize: "var(--ic-font-inner-names, clamp(2rem,7vmin,3.4rem))", lineHeight: 0.9, textAlign: "center" }}>Sarang &amp; Aishwarya</p>
           <span style={{ width: "38%", height: "1px", background: GOLD, opacity: 0.7 }} />
         </div>
       </motion.div>
@@ -626,12 +626,13 @@ export default function InvitationCard({ onOpen, stage = "sealed" }: InvitationC
         {/* Sarang */}
         <p
           style={{
-            fontFamily: "var(--font-cormorant)",
-            fontSize: "var(--ic-font-names, clamp(1.2rem, 4.2vmin, 2.05rem))",
+            fontFamily: "var(--font-alex-brush), cursive",
+            fontSize: "var(--ic-font-names, clamp(2rem, 7vmin, 3.4rem))",
             color: DARK,
             margin: "var(--ic-margin-names, clamp(4px,0.8vh,10px) 0)",
-            fontWeight: 700,
-            letterSpacing: "0.04em",
+            fontWeight: 400,
+            lineHeight: 0.9,
+            textShadow: "0 1px 2px rgba(0,0,0,0.1)",
           }}
         >
           Sarang
@@ -643,12 +644,13 @@ export default function InvitationCard({ onOpen, stage = "sealed" }: InvitationC
         {/* Aishwarya */}
         <p
           style={{
-            fontFamily: "var(--font-cormorant)",
-            fontSize: "var(--ic-font-names, clamp(1.2rem, 4.2vmin, 2.05rem))",
+            fontFamily: "var(--font-alex-brush), cursive",
+            fontSize: "var(--ic-font-names, clamp(2rem, 7vmin, 3.4rem))",
             color: DARK,
             margin: "var(--ic-margin-names, clamp(4px,0.8vh,10px) 0)",
-            fontWeight: 700,
-            letterSpacing: "0.04em",
+            fontWeight: 400,
+            lineHeight: 0.9,
+            textShadow: "0 1px 2px rgba(0,0,0,0.1)",
           }}
         >
           Aishwarya

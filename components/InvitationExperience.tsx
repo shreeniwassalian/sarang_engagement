@@ -144,7 +144,7 @@ export default function InvitationExperience() {
           style={{ overflow: "hidden", width: "100%", backgroundColor: "#BEDAEA", position: "relative" }}
         >
           <div className="invitation-content flex flex-col items-center justify-center" style={{ paddingTop: '60px', paddingBottom: '180px' }}>
-            <p className="eyebrow" style={{ color: "#7A1F2B", fontWeight: 700, letterSpacing: "0.15em", marginBottom: '1.5rem', textAlign: 'center' }}>Counting down to our celebration</p>
+            <p className="eyebrow" style={{ color: "#3A5B7C", fontWeight: 700, letterSpacing: "0.15em", marginBottom: '1.5rem', textAlign: 'center' }}>Counting down to our celebration</p>
             <Countdown />
           </div>
           
@@ -197,7 +197,7 @@ export default function InvitationExperience() {
           <div className="w-full relative bg-[#9DC1DA]">
             <div className="invitation-content" style={{ paddingTop: 0, paddingBottom: 0 }}>
               <InvitationSection className="message-section" style={{ textShadow: "none", background: "none" }}>
-                <motion.div className="text-lg sm:text-xl md:text-2xl" style={{ color: "#1E3A5F", display: "flex", flexDirection: "column", gap: "1.25rem", marginTop: "12vh", fontWeight: 500, lineHeight: 1.6, textShadow: "none" }}>
+                <motion.div className="text-lg sm:text-xl md:text-2xl" style={{ color: "#2A4B72", display: "flex", flexDirection: "column", gap: "1.25rem", marginTop: "12vh", fontWeight: 500, lineHeight: 1.6, textShadow: "none" }}>
                   <p>We eagerly await your gracious presence</p>
                   <p>to bless our special day and celebrate</p>
                   <p>the beginning of a beautiful journey together.</p>

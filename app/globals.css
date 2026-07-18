@@ -41,7 +41,7 @@
   --ic-lower-pad-y-top: clamp(72px, 19vmin, 110px);
   --ic-lower-pad-y-bottom: clamp(12px, 3.5vh, 30px);
 
-  --ic-font-names: clamp(1.2rem, 4.2vmin, 2.05rem);
+  --ic-font-names: clamp(2rem, 7vmin, 3.4rem);
   --ic-margin-names: clamp(4px, 0.8vh, 10px) 0;
 
   --ic-margin-heart: clamp(5px, 1.4vh, 13px) 0;
@@ -111,7 +111,7 @@ body {
     --ic-lower-pad-y-top: 85px;
     --ic-lower-pad-y-bottom: 24px;
 
-    --ic-font-names: 1.7rem;
+    --ic-font-names: 2.8rem;
     --ic-margin-names: 6px 0;
 
     --ic-margin-heart: 6px 0;
@@ -293,7 +293,7 @@ body {
 .couple-intro h2 {
   margin: 0 0 10px;
   color: #FFF8F0;
-  font-family: var(--font-great-vibes), cursive;
+  font-family: var(--font-alex-brush), cursive;
   font-size: clamp(3.8rem, 12vw, 5.8rem);
   font-weight: 400;
   line-height: 0.88;
@@ -326,7 +326,7 @@ body {
 .with-script {
   margin: -2px 0 !important;
   color: #FFF0D4 !important;
-  font-family: var(--font-great-vibes), cursive !important;
+  font-family: var(--font-alex-brush), cursive !important;
   font-size: clamp(3rem, 9.5vw, 4.4rem) !important;
   font-weight: 400 !important;
   line-height: 0.75 !important;
@@ -508,7 +508,7 @@ body {
 .love-names span {
   color: #FFF0D4;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-  font-family: var(--font-great-vibes), cursive;
+  font-family: var(--font-alex-brush), cursive;
   font-weight: 700;
 }
 
