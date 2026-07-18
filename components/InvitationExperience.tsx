@@ -14,6 +14,9 @@ export default function InvitationExperience() {
   const [isScratched, setIsScratched] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ container: scrollRef });
+  const scratchCardRef = useRef<HTMLDivElement>(null);
+  const isScratchCardInView = useInView(scratchCardRef, { root: scrollRef, margin: "-15% 0px" });
+  const opacityAfterScratch = useTransform(scrollYProgress, [0, 0.9, 0.98], [1, 1, 0]);
 
 
 
@@ -32,16 +35,18 @@ export default function InvitationExperience() {
       >
         <div className="w-full relative" style={{ backgroundColor: "#D7E9F3" }}>
         {/* Scroll Indicator at the bottom of the screen */}
-        <motion.div
-          className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 pointer-events-none"
-          style={{ opacity: useTransform(scrollYProgress, [0, 0.1], [1, 0]) }}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7A1F2B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M6 9l6 6 6-6" />
-          </svg>
-        </motion.div>
+        {((!isScratched && !isScratchCardInView) || isScratched) && (
+          <motion.div
+            className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 pointer-events-none"
+            style={{ opacity: isScratched ? opacityAfterScratch : 1 }}
+            animate={{ y: [0, -8, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          >
+            <div className="bg-[#D4AF37] text-white text-xs font-bold tracking-widest px-5 py-2.5 rounded-full shadow-[0_4px_14px_0_rgba(212,175,55,0.4)] border border-[#C9A24B]">
+              SCROLL
+            </div>
+          </motion.div>
+        )}
 
         <div className="relative w-full aspect-[941/1672] md:aspect-[3/2]">
           <div className="absolute top-0 left-0 w-full z-0 pointer-events-none overflow-hidden" style={{ bottom: '-40px' }}>
@@ -89,7 +94,7 @@ export default function InvitationExperience() {
         </div>
 
         <div className="invitation-content" style={{ paddingTop: '20px' }}>
-          <div className="relative flex flex-col items-center justify-center my-16">
+          <div ref={scratchCardRef} className="relative flex flex-col items-center justify-center my-16">
             {/* The Scratch Card */}
             <div className="relative z-10 w-[85%] max-w-[320px] sm:max-w-[360px] mx-auto">
               <ScratchCard onReveal={() => setIsScratched(true)}>

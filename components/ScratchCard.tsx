@@ -28,38 +28,44 @@ export default function ScratchCard({ children, onReveal }: ScratchCardProps) {
     };
   }, []);
 
+  const hasFiredRef = useRef(false);
+
   useEffect(() => {
-    if (isRevealed) {
+    if (isRevealed && !hasFiredRef.current) {
+      hasFiredRef.current = true;
       if (typeof window !== "undefined" && "vibrate" in navigator) {
         try {
           navigator.vibrate([40, 40, 80, 40, 120]);
         } catch (err) {}
       }
       if (onReveal) onReveal();
-      const duration = 1500;
-      const end = Date.now() + duration;
+      
+      setTimeout(() => {
+        const duration = 2500;
+        const end = Date.now() + duration;
 
-      const frame = () => {
-        confetti({
-          particleCount: 2,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0, y: 0.7 },
-          colors: ['#D4AF37', '#FFF0D4', '#7A1F2B', '#ADD8E6']
-        });
-        confetti({
-          particleCount: 2,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1, y: 0.7 },
-          colors: ['#D4AF37', '#FFF0D4', '#7A1F2B', '#ADD8E6']
-        });
+        const frame = () => {
+          confetti({
+            particleCount: 2,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0, y: 0.7 },
+            colors: ['#D4AF37', '#FFF0D4', '#7A1F2B', '#ADD8E6']
+          });
+          confetti({
+            particleCount: 2,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1, y: 0.7 },
+            colors: ['#D4AF37', '#FFF0D4', '#7A1F2B', '#ADD8E6']
+          });
 
-        if (Date.now() < end) {
-          requestAnimationFrame(frame);
-        }
-      };
-      frame();
+          if (Date.now() < end) {
+            requestAnimationFrame(frame);
+          }
+        };
+        frame();
+      }, 1000);
     }
   }, [isRevealed, onReveal]);
 

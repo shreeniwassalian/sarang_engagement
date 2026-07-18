@@ -3,9 +3,9 @@ import Divider from "./Divider";
 export default function Venue() {
   return (
     <>
-      <p className="eyebrow" style={{ color: "#D9EDF8" }}>Venue</p>
+      <p className="eyebrow" style={{ color: "#FFFFFF" }}>Venue</p>
       <h2 className="venue-name" style={{ color: "#D9EDF8" }}>Nakshatra Palace</h2>
-      <p className="venue-location" style={{ color: "#D9EDF8" }}>Khed Shivapur</p>
+      <p className="venue-location" style={{ color: "#FFFFFF" }}>Khed Shivapur</p>
       <Divider compact />
       <a
         className="map-widget-container"
@@ -19,6 +19,7 @@ export default function Venue() {
             src="/google-map-widget.png"
             alt="Google Maps Location Widget for Nakshatra Palace"
             className="map-widget-img"
+            style={{ filter: "invert(1) saturate(0.8) brightness(0.9)" }}
           />
           <div className="map-widget-overlay">
             <span className="map-widget-btn">View on Google Maps</span>
